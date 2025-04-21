@@ -8,3 +8,11 @@ export interface Customer {
   created_at?: string;    // 取得時のみ使用
   updated_at?: string;    // 取得時のみ使用
 }
+
+export interface FormError {
+  name?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  global?: string;
+}

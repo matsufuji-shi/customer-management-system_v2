@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../services/api";
-import {Customer} from "../types/customer"
+import {Customer, FormError} from "../types/customer"
+
 
 
 interface CustomerFormProps {
     onListAdded?: () => void; // リスト追加後のコールバック関数（省略可能）
-  }
-  
-  interface FormError {
-    name?: string;
-    email?: string;
-    phone?: string;
-    address?: string;
-    global?: string;
   }
   
   const CustomerForm: React.FC<CustomerFormProps> = ({ onListAdded }) => {
