@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const userController = require("../controllers/userController");
+const userController = require("../controllers/customerController");
 
 // ユーザー一覧を取得する
 router.get("/get/users", userController.getUsers);

@@ -1,5 +1,5 @@
 import { Request, Response } from "express"; // Express の型をインポート
-const db = require("../db/connection");
+const db = require("../config/db");
 
 // 全ユーザーを取得する
 const getUsers = (req: Request, res: Response): void => {
