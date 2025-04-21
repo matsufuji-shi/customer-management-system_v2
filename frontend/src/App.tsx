@@ -1,18 +1,18 @@
 import React from "react";
 import './App.css';
-import useCategories from "./hooks/useCategories";
-import UserForm from "./components/UserForm";
-import UserList from "./components/UserList";
-import apiService from "./services/apiService";
+// import useCategories from "./hooks/useCategories";
+import UserForm from "./components/CustomerForm";
+import UserList from "./components/CustomerList";
+import apiService from "./services/api";
 
 function App() {
-    const { categoryList, refreshCategories } = useCategories();
+    // const { categoryList, refreshCategories } = useCategories();
 
     const addUser = (name:string, email:string) => {
         apiService.addUser(name, email)
             .then(() => {
                 alert("User added successfully");
-                refreshCategories();
+                // refreshCategories();
             })
             .catch(err => {
                 console.error("Error adding user: ", err);
@@ -23,7 +23,7 @@ function App() {
     return (
         <div className="App">
             <UserForm addUser={addUser} />
-            <UserList categoryList={categoryList} />
+            {/* <UserList categoryList={categoryList} /> */}
         </div>
     );
 }

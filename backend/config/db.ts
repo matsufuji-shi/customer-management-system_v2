@@ -4,7 +4,7 @@ const db = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "rootroot",
-    database: "express_db"
+    database: "company"
 });
 
-module.exports = db;
+export default db;
