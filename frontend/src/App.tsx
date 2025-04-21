@@ -1,31 +1,22 @@
-import React from "react";
-import './App.css';
-// import useCategories from "./hooks/useCategories";
-import UserForm from "./components/CustomerForm";
-import UserList from "./components/CustomerList";
-import apiService from "./services/api";
+// import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import CustomerList from "./components/CustomerList"; //一覧
+import CustomerForm from "./components/CustomerForm"; //追加・編集
+import CustomerDetail from "./components/CustomerDetail"; //詳細
 
+
+// 設定終わった後もこのエラーが出ている場合は確認する
 function App() {
-    // const { categoryList, refreshCategories } = useCategories();
-
-    const addUser = (name:string, email:string) => {
-        apiService.addUser(name, email)
-            .then(() => {
-                alert("User added successfully");
-                // refreshCategories();
-            })
-            .catch(err => {
-                console.error("Error adding user: ", err);
-                alert("Failed to add user");
-            });
-    };
-
     return (
-        <div className="App">
-            <UserForm addUser={addUser} />
-            {/* <UserList categoryList={categoryList} /> */}
-        </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<CustomerList />} />
+          <Route path="/add-form" element={<CustomerForm />} />
+          <Route path="/form/:id" element={<CustomerForm />} />
+          <Route path="/detail/:id" element={<CustomerDetail />} />
+        </Routes>
+      </Router>
     );
-}
+  }
 
 export default App;

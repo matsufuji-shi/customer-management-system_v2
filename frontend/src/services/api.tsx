@@ -1,16 +1,10 @@
-import Axios from 'axios';
+import axios from "axios";
 
-const getUsers = () => {
-    return Axios.get("http://localhost:3001/api/get/users");
-};
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:3001/api", // バックエンドのAPIのURL
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-const addUser = (name: string, email: string) => {
-    return Axios.post("http://localhost:3001/api/insert/user", { name, email });
-};
-
-const apiService = {
-    getUsers,
-    addUser,
-};
-
-export default apiService;
+export default axiosInstance;
