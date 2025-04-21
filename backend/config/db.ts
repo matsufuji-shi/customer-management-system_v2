@@ -7,4 +7,4 @@ const db = mysql.createPool({
     database: "company"
 });
 
-module.exports = db;
+export default db;
