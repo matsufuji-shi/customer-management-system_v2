@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-const UserForm = ({ addUser }) => {
+interface UserFormProps {
+    addUser: (name: string, email: string) => void;
+}
+
+const UserForm = ({ addUser }: UserFormProps) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 

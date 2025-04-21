@@ -4,7 +4,7 @@ const getUsers = () => {
     return Axios.get("http://localhost:3001/api/get/users");
 };
 
-const addUser = (name, email) => {
+const addUser = (name: string, email: string) => {
     return Axios.post("http://localhost:3001/api/insert/user", { name, email });
 };
 

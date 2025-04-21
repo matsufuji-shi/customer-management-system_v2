@@ -1,15 +1,19 @@
 import React from "react";
-
-const UserList = ({ categoryList }) => {
+interface User {
+    name: string;
+    email: string;
+}
+interface UserListProps {
+    categoryList: User[];
+}
+const UserList = ({ categoryList }: UserListProps) => {
     return (
         <ul>
-            {categoryList.map((val, index) => (
+            {categoryList.map((val: User, index: number) => (
                 <li key={index}>
                     <div className="user-info">
                         <span>名前:</span><span>{val.name}</span>
-                    </div>
-                    <div className="user-info">
-                        <span>Email:</span><span>{val.email}</span>
+                        <span>メール:</span><span>{val.email}</span>
                     </div>
                 </li>
             ))}

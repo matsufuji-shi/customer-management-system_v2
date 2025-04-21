@@ -8,7 +8,7 @@ import apiService from "./services/apiService";
 function App() {
     const { categoryList, refreshCategories } = useCategories();
 
-    const addUser = (name, email) => {
+    const addUser = (name:string, email:string) => {
         apiService.addUser(name, email)
             .then(() => {
                 alert("User added successfully");
