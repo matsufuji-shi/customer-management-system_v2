@@ -1,5 +1,5 @@
 // import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CustomerList from "./components/CustomerList"; //一覧
 import CustomerForm from "./components/CustomerForm"; //追加・編集
 import CustomerDetail from "./components/CustomerDetail"; //詳細
