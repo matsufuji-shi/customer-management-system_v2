@@ -23,9 +23,9 @@ db.getConnection((err: Error | null, connection: any) => {
     }
 });
 
-// サーバーの起動
-app.listen(3001, () => {
-    console.log('Server running on port 3001');
-});
+// // サーバーの起動
+// app.listen(3001, () => {
+//     console.log('Server running on port 3001');
+// });
 
 export default app;
