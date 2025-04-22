@@ -18,30 +18,16 @@ const getCustomers = (req: Request, res: Response) => {
 
 // 顧客を追加する
 const addCustomers = (req: Request, res: Response) => {
-    const { name, email, phone, address, company_name } = req.body;
-
-    // --- バリデーション（必須項目のチェック） ---
-    if (!name || !email || !phone || !address) {
-        return res.status(400).json({ message: "全ての必須項目を入力してください。" });
-    }
-
-    const sqlInsert = `
-        INSERT INTO customers (name, email, phone, address, company_name)
-        VALUES (?, ?, ?, ?, ?)
-    `;
-
-    db.query(
-        sqlInsert,
-        [name, email, phone, address, company_name],
-        (err: any, result: RowDataPacket[]) => {
-            if (err) {
-                console.error("データベースエラー:", err);
-                return res.status(500).json({ message: "サーバーエラーが発生しました。再度お試しください。" });
-            }
-
-            return res.status(201).json({ message: "顧客情報が正常に追加されました。" });
+    const { name, email, phone, address, company_name } = req.body as Customer;
+    const sqlInsert = "INSERT INTO customers (name, email, phone, address, company_name) VALUES (?, ?, ?, ?, ?)";
+    db.query(sqlInsert, [name, email, phone, address, company_name], (err: any, result: RowDataPacket[]) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send("Failed to add new customer");
+        } else {
+            res.status(200).send("Customer added successfully");
         }
-    );
+    });
 };
 
 // 顧客を更新する
