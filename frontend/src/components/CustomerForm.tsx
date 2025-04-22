@@ -87,42 +87,58 @@ const CustomerForm: React.FC<CustomerFormProps> = ({ onListAdded }) => {
     };
 
     // 保存処理
-    const handleSave = async (e: React.FormEvent): Promise<void> => {
+const handleSave = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    
-    if (!validateForm()) return;  // バリデーション失敗なら保存しない
-    
+
+    if (!validateForm()) return;
+
     const { name, email, phone, address } = formState;
-    
+
     try {
         if (isEditing) {
-        await axiosInstance.put(`/customers/${id}`, formState);
-        console.log("タスクが更新されました:", name, email, phone, address);
+            await axiosInstance.put(`/customers/${id}`, formState);
+            console.log("タスクが更新されました:", name, email, phone, address);
         } else {
-        // 新規追加処理を追加
-        await axiosInstance.post("/customers", formState);
-        console.log("タスクが追加されました:", name, email, phone, address);
+            await axiosInstance.post("/customers", formState);
+            console.log("タスクが追加されました:", name, email, phone, address);
 
-        setFormState({
-            name: "",
-            email: "",
-            phone: "",
-            address: "",
-            company_name: "",
-        });
-        if (onListAdded) onListAdded();
+            setFormState({
+                name: "",
+                email: "",
+                phone: "",
+                address: "",
+                company_name: "",
+            });
+            if (onListAdded) onListAdded();
         }
         navigate("/");
-    } catch (error) {
+    } catch (error: any) {
         console.error("タスクの処理に失敗しました", error);
-    }
-    };
 
-    // キャンセル処理
-    const handleCancel = (): void => {
+        if (error.response && error.response.status >= 500) {
+            setError((prev) => ({
+                ...prev,
+                global: "サーバーで問題が発生しました。しばらくしてから再試行するか、サポートまでご連絡ください。",
+            }));
+        } else if (error.response && error.response.data?.message) {
+            setError((prev) => ({
+                ...prev,
+                global: `エラー: ${error.response.data.message}`,
+            }));
+        } else {
+            setError((prev) => ({
+                ...prev,
+                global: "予期しないエラーが発生しました。もう一度お試しください。",
+            }));
+        }
+    }
+};
+
+// これが外にあるべき
+const handleCancel = (): void => {
     setFormState(originalFormState);
     navigate(`/detail/${id}`);
-    };
+};
 
     return (
     <div>
