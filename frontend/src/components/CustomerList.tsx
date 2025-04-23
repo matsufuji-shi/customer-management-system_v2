@@ -3,6 +3,8 @@
     import { getLists } from "../pages/CustomerListPage";
     import { Customer } from "../types/customer";
     import SearchBar from "./SearchBar";
+    import "../App.css"
+
 
     function CustomerList() {
         const [customer, setCustomer] = useState<Customer[]>([]);
@@ -52,11 +54,11 @@
 
 
         return (
-        <div>
+        <div className="listPages">
             <h1>顧客一覧</h1>
             <SearchBar searchToData={searchToData}/>
 
-            <table>
+            <table className="listTable">
             <thead>
                 <tr>
                 {listHeader.map((header, i) => (
@@ -73,7 +75,7 @@
                     <td>{cust.phone}</td>
                     <td>{cust.company_name}</td>
                     <td>
-                    <button onClick={() => goToGetCustomers(cust.id)}>
+                    <button onClick={() => goToGetCustomers(cust.id)} className="listBtn">
                         詳細
                     </button>
                     </td>

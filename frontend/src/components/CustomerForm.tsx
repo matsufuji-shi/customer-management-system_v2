@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../services/api";
 import {Customer, FormError} from "../types/customer"
+import "../App.css"
 
 interface CustomerFormProps {
     onListAdded?: () => void;
@@ -141,11 +142,11 @@ const handleCancel = (): void => {
 };
 
     return (
-    <div>
+    <div className="form">
         <h2 className="title">顧客追加/編集</h2>
 
         <form onSubmit={handleSave} className="formGroup">
-        <div className="form">
+        <div>
             <div>顧客名：</div>
             <input
             type="text"
@@ -198,9 +199,9 @@ const handleCancel = (): void => {
             <br/>
         </div>
         <div className="formButton">
-            <button type="submit">{isEditing ? "保存" : "追加"}</button>
+            <button type="submit" className="formBtn">{isEditing ? "保存" : "追加"}</button>
             {isEditing && (
-            <button type="button" onClick={handleCancel}>
+            <button type="button" onClick={handleCancel} className="formBtn">
                 キャンセル
             </button>
             )}

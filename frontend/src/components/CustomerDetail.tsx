@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../services/api";  // axiosインスタンスをインポート
 import { Customer } from "../types/customer";
+import "../App.css"
 
 
 function CustomerDetail() {
@@ -65,8 +66,8 @@ function CustomerDetail() {
           <p><strong>電話番号:</strong> {list.phone}</p>
           <p><strong>住所:</strong> {list.address}</p>  
           <p><strong>会社名:</strong> {list.company_name}</p>
-          <Link to={`/form/${id}`}><button className="detailButton">編集</button></Link>
-          <button onClick={handleDelete} className="detailButton">削除</button>
+          <Link to={`/form/${id}`}><button className="detailBtn">編集</button></Link>
+          <button onClick={handleDelete} className="detailBtn">削除</button>
           </div>
         </>
       ) : (

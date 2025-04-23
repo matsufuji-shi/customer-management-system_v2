@@ -1,93 +1,83 @@
-/* 全体のスタイル */
-.App {
+/* list,formのページをセンター揃え */
+.listPages,.form,.detail{
+text-align: center;
+}
+
+/* テーブル設定 */
+.listTable{
+  width: 100%;
   text-align: left;
-  width: 80%;
-  max-width: 800px;
-  margin: 40px auto;
-  font-family: Arial, sans-serif;
-  color: #333;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background-color: #ffffff;
+  border: 1px black solid;
+  margin: 10px 0px;
+  border-collapse: collapse
+} 
+th,td{
+  border: 1px black solid;
+  padding: 5px;
 }
 
-/* フォームのスタイル */
-.textBox {
-  text-align: center;
-  margin-bottom: 20px;
+th{
+  background-color: rgb(238 238 238);
 }
 
-.textBox input {
-  width: 45%;
-  padding: 10px;
-  margin: 5px 2.5%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+td{
+  background-color: rgb(247, 247, 247);
 }
 
-.textBox button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.textBox button:hover {
-  background-color: #0056b3;
-}
-
-/* リストのスタイル */
-ul {
-  list-style-type: none;
-  padding-inline-start: 0;
-  margin: 0;
-}
-
-li {
-  margin: 5px 0;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.user-info {
-  display: flex;
-  justify-content: flex-start; /* 左寄せに変更 */
-  align-items: center;
-  padding: 2px 0;
-}
-
-.user-info span:first-child {
+/* ボタン設定 */
+.listBtn,.formBtn,.detailBtn{
+  border: 0px black solid;
+  border-radius: 5px;
+  background-color: #008cba;
   font-weight: bold;
-  margin-right: 10px; /* ラベルとテキストの間のスペースを減らす */
+  padding: 5px 10px;
+  color: white;
+  margin: 5px;
 }
 
-.user-info span:last-child {
-  flex-grow: 1;
-  text-align: right;
-  padding-left: 10px;
+/* フォームの入力欄センター */
+.formGroup,.detailList{
+  text-align: left;
+  width: 50%;
+  margin: 0 auto;
 }
 
-/* メディアクエリを追加してレスポンシブ対応 */
-@media (max-width: 600px) {
-  .textBox input, .textBox button {
-    width: 100%;
-    margin: 5px 0;
-  }
+/* 入力欄 */
+.formGroup input{
+  width: 95%;
+  padding: 10px;
+  border: 1px #d2d2d2 solid;
+  border-radius: 5px;
+}
+.formGroup div{
+  font-weight: bold;
+  margin: 5px;
+}
 
-  .user-info {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* 編集・追加のみセンター */
+.formButton{
+text-align: center;  
+}
 
-  .user-info span:last-child {
-    text-align: left;
-  }
+/* 詳細ページ */
+.detailList,.formGroup{
+  border: 1px #dcdcdc solid;
+  padding: 14px;
+}
+
+.searchBerInput{
+  width: 260px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px #d3d3d3 solid;
+  border-radius: 5px;
+}
+
+.searchBer button{
+  border: 0px black solid;
+  border-radius: 5px;
+  background-color: #11c108;
+  padding: 11px 10px;
+  color: white;
+  margin: 5px;
 }
