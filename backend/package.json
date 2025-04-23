@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node dist app.ts",
+    "start":"ts-node backend/app.ts",
     "dev": "ts-node-dev app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
@@ -26,3 +26,4 @@
     "typescript": "^5.8.3"
   }
 }
+  
